@@ -14,45 +14,10 @@ public final class IntegerDuplicateDeleter extends DuplicateDeleter<Integer> {
 
     @Override
     public Integer[] removeDuplicates(int maxNumberOfDuplications) {
-        Integer[] result = new Integer[super.array.length];
-        int resCounter = -1;
-        for(int i = 0; i < super.array.length; i++) {
-            int dupCounter = 1;
-            for(int j = 0; j < super.array.length; j++) {
-                if (j != i && Objects.equals(array[i], array[j])) dupCounter++;
-                if (j == super.array.length - 1 && dupCounter < maxNumberOfDuplications) {
-                    resCounter++;
-                    result[resCounter] = super.array[i];
-                }
-            }
-        }
-        int nullCounter = nullCounter(result);
-        return Arrays.copyOf(result, nullCounter);
+        return super.removeDuplicates(maxNumberOfDuplications);
     }
-
-    public int nullCounter(Integer[] result) {
-        int nullCounter = 0;
-        for (Integer s : result) {
-            if (s != null) nullCounter++;
-        }
-        return nullCounter;
-    }
-
     @Override
     public Integer[] removeDuplicatesExactly(int exactNumberOfDuplications) {
-        Integer[] result = new Integer[super.array.length];
-        int resCounter = -1;
-        for(int i = 0; i < super.array.length; i++) {
-            int dupCounter = 1;
-            for(int j = 0; j < super.array.length; j++) {
-                if (j != i && Objects.equals(array[i], array[j])) dupCounter++;
-                if (j == super.array.length - 1 && dupCounter != exactNumberOfDuplications) {
-                    resCounter++;
-                    result[resCounter] = super.array[i];
-                }
-            }
-        }
-        int nullCounter = nullCounter(result);
-        return Arrays.copyOf(result, nullCounter);
+        return super.removeDuplicatesExactly(exactNumberOfDuplications);
     }
 }
